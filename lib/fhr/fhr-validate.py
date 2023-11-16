@@ -12,11 +12,13 @@ def main():
                     positional <file> input and output files
                         input files can be one of:
                             <input>.yml
-                            <input>.fasta  - fasta contining a ffrgs header
+                            <input>.fasta  - fasta contining a fhr header
                             <input>.html   - html containing microdata
+                            <input>.json   - json containing a fhr header
+                            <input>.gfa    - gfa file contining a fhr header
                             '''))
 
-    parser.add_argument('file', 
+    parser.add_argument('file',
             nargs=1,
             metavar='<file>',
             help='input followed by output')
@@ -36,6 +38,8 @@ def main():
             fhr_to_be_validated.input_json(input_file)
         elif args.file[0].endswith(".html"):
             fhr_to_be_validated.input_microdata(input_file)
+        elif args.file[0].endswith(".gfa"):
+            fhr_to_be_validated.input_gfa(input_file)
         else:
             sys.exit('Input file extention not found')
 

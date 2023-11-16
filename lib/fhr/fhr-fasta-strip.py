@@ -13,7 +13,7 @@ def main():
                             <input>.fasta  - fasta contining a ffrgs header
                             '''))
 
-    parser.add_argument('file', 
+    parser.add_argument('file',
             nargs=1,
             metavar='<file>',
             help='input followed by output')
