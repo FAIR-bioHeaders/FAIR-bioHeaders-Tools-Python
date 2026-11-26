@@ -22,7 +22,7 @@ from ._microdata import (
     preprocess,
 )
 
-__version__ = "0.13.1"
+__version__ = "0.14.0"
 SCHEMA = json.loads(
     files(__package__).joinpath("fhr_schema.json").read_text(encoding="utf-8")
 )

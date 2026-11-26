@@ -19,8 +19,8 @@ FROM python:3.13-slim@sha256:70729b46c69b4f1e97c4822c1af3df53a1476cf5ddc6c087c0c
 ARG VERSION=unknown
 LABEL org.opencontainers.image.title="fair-bioheaders" \
       org.opencontainers.image.description="Validate, convert, combine and strip FAIR-bioHeaders metadata" \
-      org.opencontainers.image.source="https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools" \
-      org.opencontainers.image.documentation="https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools#container-image" \
+      org.opencontainers.image.source="https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python" \
+      org.opencontainers.image.documentation="https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python#container-image" \
       org.opencontainers.image.licenses="MPL-2.0" \
       org.opencontainers.image.version="${VERSION}"
 

@@ -1,4 +1,4 @@
-# Native FHGM model 0.1 in toolkit 0.13.1
+# Native FHGM model 0.1 in toolkit 0.14.0
 
 Specification v0.8.0 publishes the native model contract at
 `model-contracts/fhgm/0.1/fhgm-model.schema.json`, with identifier

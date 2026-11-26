@@ -5,7 +5,7 @@
 
 [project]
 name = "fhr"
-version = "0.13.1"
+version = "0.14.0"
 description = "Renamed to fair-bioheaders: installing fhr installs fair-bioheaders"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -14,7 +14,7 @@ authors = [
     {name = "Adam Wright", email = "wright@fhref.org"},
 ]
 license = {file = "LICENSE"}
-dependencies = ["fair-bioheaders==0.13.1"]
+dependencies = ["fair-bioheaders==0.14.0"]
 
 # The same fhr-* commands as fair-bioheaders. When pip upgrades fhr 0.3, it
 # installs fair-bioheaders first and then removes fhr 0.3, deleting the fhr-*
@@ -33,8 +33,8 @@ fhr-gff3-combine = "bioheaders.cli:gff3_combine_main"
 fhr-gff3-validate = "bioheaders.cli:gff3_validate_main"
 
 [project.urls]
-Homepage = "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools"
-Repository = "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools"
+Homepage = "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python"
+Repository = "https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python"
 
 # Poetry cannot build a distribution without packages, so this uses setuptools:
 # build it with "python -m build compat/fhr" (or "uv build compat/fhr").

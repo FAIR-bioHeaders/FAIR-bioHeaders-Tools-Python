@@ -1,0 +1,164 @@
+# python-paths.txt -- paths carried from FAIR-bioHeaders/FAIR-bioHeaders-Tools into
+# FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python by the 0.14.0 relocation import.
+#
+# Cut commit: FAIR-bioHeaders-Tools main c7abb7358bbe09796051caa663000cd43bd605f6
+#             (Merge pull request #216; latest release v0.13.1; first prepared at 1f3cf7c2)
+# Used as:    git filter-repo --paths-from-file python-paths.txt --refs main
+# Syntax:     git-filter-repo 2.47.0 --paths-from-file; each line is a literal
+#             file or directory prefix ('#' lines and blank lines are ignored).
+# Source:     Tools#206 design record D2/D4 (comment 7172928109) as amended by
+#             "Maintainer decisions recorded" (comment 7173759404): decision 29
+#             keeps galaxy/, .github/workflows/galaxy-tools.yml and
+#             tests/galaxy_metadata_tool_test.py in Tools only; decision 25 keeps
+#             the frozen assessment schemas at their raw Tools paths, and
+#             Tools-Python carries its own packaged copies of them (they live in
+#             bioheaders/assess/data/, included below).
+#
+# NOT carried (stay in Tools only): galaxy/, .github/workflows/galaxy-tools.yml,
+#   tests/galaxy_metadata_tool_test.py.
+# Carried AND kept in Tools (Tools keeps its own copy): LICENSE (byte-identical),
+#   .claude-plugin/marketplace.json (install address; Tools-Python needs its copy
+#   because tests/claude_plugin_test.py reads it), bioheaders/assess/data/*.schema.json
+#   (frozen raw-$id copies), CHANGELOG.md (frozen in Tools, continued here), and the
+#   per-repository BOTH files (README, AGENTS, CONTRIBUTING, SECURITY, ...).
+
+## 1. Python package, compatibility shims and checkout markers (D4: PY)
+bioheaders/
+fhr.py
+fhr/
+fhr_schema.json
+fhr_convert.py
+fhr_validate.py
+fasta/
+gfa/
+__init__.py
+compat/
+
+## 2. Build, packaging and container (D4: PY)
+pyproject.toml
+poetry.lock
+pytest.ini
+.flake8
+Dockerfile
+.dockerignore
+docker/
+
+## 3. Tests: every tests/ entry except the Galaxy-owned test (decision 29)
+tests/fixtures/
+tests/assess_batch_test.py
+tests/assess_cli_test.py
+tests/assess_conformance_test.py
+tests/assess_conventions_test.py
+tests/assess_data_test.py
+tests/assess_helpers.py
+tests/assess_links_test.py
+tests/assess_online_test.py
+tests/assess_report_test.py
+tests/assess_rubric_test.py
+tests/assess_sniff_test.py
+tests/assess_suggestions_test.py
+tests/audit_boundaries_test.py
+tests/bioheaders_test.py
+tests/busco_lineage_12_test.py
+tests/capability_matrix_test.py
+tests/checksum_line_test.py
+tests/claude_plugin_test.py
+tests/cli_warnings_test.py
+tests/compression_test.py
+tests/conftest.py
+tests/container_test.py
+tests/context_link_html_test.py
+tests/dcmi_test.py
+tests/extension_fields_test.py
+tests/faidx_test.py
+tests/fhgff3_microdata_test.py
+tests/fhgff3_test.py
+tests/fhgm_conformance_test.py
+tests/fhgm_native_conformance_test.py
+tests/fhgm_native_selection_test.py
+tests/fhgm_test.py
+tests/fhp_formats_test.py
+tests/fhp_test.py
+tests/fhr1_compat_test.py
+tests/fhr_test.py
+tests/fht_conformance_test.py
+tests/fht_microdata_test.py
+tests/fht_publication_test.py
+tests/fht_test.py
+tests/hardening_test.py
+tests/header_family_test.py
+tests/jsonld_export_test.py
+tests/jsonld_test.py
+tests/metadata_json_test.py
+tests/metadata_test.py
+tests/microdata_html_parsing_test.py
+tests/microdata_itemref_test.py
+tests/microdata_shared_test.py
+tests/near_miss_test.py
+tests/pin_audit_test.py
+tests/pin_currency_test.py
+tests/record_markers_test.py
+tests/release_versions_test.py
+tests/runtime_policy_test.py
+tests/schema_validator_routing_test.py
+tests/schema_validator_test.py
+tests/selection_test.py
+tests/streaming_test.py
+tests/terminal_escape_test.py
+tests/validation_rules_test.py
+
+## 4. Examples, documentation, scripts, specs, references (D4: PY / BOTH)
+examples/
+docs/
+scripts/
+specs/
+references/
+.specify/
+.claude/
+
+## 5. Claude Code plugin (D4: PY) and its marketplace manifest (copy; Tools keeps the address)
+plugins/
+.claude-plugin/
+
+## 6. GitHub files: the PR template (receipt block, Tools#216) and every workflow except galaxy-tools.yml (decision 29)
+.github/pull_request_template.md
+.github/workflows/capability-matrix.yml
+.github/workflows/codacy.yml
+.github/workflows/container.yml
+.github/workflows/declared-references.yml
+.github/workflows/dockerfile.yml
+.github/workflows/pin-audit.yml
+.github/workflows/pytest.yaml
+.github/workflows/release.yml
+
+## 7. Repository files (D4: BOTH or PY-continues; rewritten per repository after import)
+LICENSE
+README.md
+CHANGELOG.md
+CITATION.cff
+AGENTS.md
+CONTRIBUTING.md
+SECURITY.md
+CODE_OF_CONDUCT.md
+.gitattributes
+.gitignore
+
+## 8. Historical-only names (absent at the cut; kept so pre-rename history survives).
+## Generated with: git log main --format= --name-only --no-renames, minus the cut tree,
+## minus Tools-only paths. Includes the pre-0.4.0 layouts (lib/, src/, fhr_file_converter/,
+## t/), the removed nextflow/ tree and its workflows (now FAIR-bioHeaders-Nextflow).
+.dockstore.yml
+.github/workflows/nextflow-modules.yml
+.github/workflows/nextflow-workflow.yml
+.github/workflows/stale.yml
+fhr.schema.json
+fhr_file_converter/
+lib/
+nextflow/
+notes.txt
+setup.cfg
+src/
+t/
+tests/ffrgs.t.py
+tests/ffrgs_test.py
+tests/header.t.py

@@ -3,7 +3,12 @@
 ## Current repository context
 
 This is the active family toolkit, including installed commands and the Claude
-Code plugin. The former FHR-File-Converter repository name redirects here (verified 2026-11-20); it is not a deleted repository.
+Code plugin. Since 0.14.0 it lives in FAIR-bioHeaders-Tools-Python, imported with its
+history from FAIR-bioHeaders-Tools at commit c7abb735 (record: `docs/relocation/`);
+FAIR-bioHeaders-Tools is now the Rust core library and keeps the 0.3–0.13 tags,
+releases and the Galaxy wrappers. Issue numbers in history (`#N`) before the import
+refer to FAIR-bioHeaders-Tools; reference them as `FAIR-bioHeaders/FAIR-bioHeaders-Tools#N`.
+The former FHR-File-Converter repository name redirects to FAIR-bioHeaders-Tools (verified 2026-11-20); it is not a deleted repository.
 Redirects are not a guarantee against future reuse of the old name. The shared specification publishes
 contracts; type repositories develop them. Bundle reviewed, versioned schemas
 with provenance and explicit supported-version behavior. A new parser/form/export
@@ -75,7 +80,7 @@ it as current authority.
 
 `plugins/fair-bioheaders` is the Claude Code plugin (one skill) and `.claude-plugin/marketplace.json` its marketplace; neither is packaged. The plugin's `plugin.json` `version` follows the package version, so bump it in every release (`tests/claude_plugin_test.py` checks this), and keep the skill's commands and schema table in step with the CLI and bundled schemas.
 
-`galaxy/tools/fair_bioheaders` holds the Galaxy wrappers (not packaged), laid out for galaxyproject/tools-iuc. Their `@TOOL_VERSION@` in `macros.xml` also follows the package version (`galaxy-tools.yml` checks this), so bump it, and reset `@VERSION_SUFFIX@` to 0, in every release; keep the wrappers' options in step with the CLI.
+The Galaxy wrappers are not in this repository: `galaxy/tools/fair_bioheaders` stays in FAIR-bioHeaders-Tools, the source of truth for tooling integration (maintainer decision 29, FAIR-bioHeaders-Tools#206), with tools-iuc as the published copy. Its `@TOOL_VERSION@` is therefore no longer a release holder here (`scripts/check_release_versions.py` checks seven holders). After every `fair-bioheaders` release, open a FAIR-bioHeaders-Tools PR that bumps `@TOOL_VERSION@` (and resets `@VERSION_SUFFIX@` to 0), coordinated with Adam, then the tools-iuc PR; keep the wrappers' options in step with the CLI.
 
 ## Using FAIR-bioHeaders in another project
 

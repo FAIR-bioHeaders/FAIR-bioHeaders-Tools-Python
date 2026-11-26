@@ -1,6 +1,35 @@
 # Changelog
 
-## Unreleased
+## 0.14.0 (2026-11-26)
+
+- Relocation release. The Python toolkit (the `fair-bioheaders` and `fhr`
+  distributions, the `bioheaders` package, the deprecated `fhr` module and all
+  13 commands) moved from
+  [FAIR-bioHeaders-Tools](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools) to
+  [FAIR-bioHeaders-Tools-Python](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python), which
+  was created from FAIR-bioHeaders-Tools `main` at
+  `c7abb7358bbe09796051caa663000cd43bd605f6` by a history-preserving
+  `git filter-repo` import (FAIR-bioHeaders-Tools#206; record, path list and
+  commit map in `docs/relocation/`). Package, import and command names, entry
+  points and behaviour are unchanged; the packaged code is the same as at that commit,
+  apart from repository URLs and version numbers. FAIR-bioHeaders-Tools becomes
+  the Rust core library and keeps the 0.3–0.13 tags, releases and this file's
+  earlier history; the Galaxy wrappers stay there, so their `@TOOL_VERSION@` is
+  no longer a release holder of this package. Releases are published from this
+  repository's `release.yml` through PyPI trusted publishing with PEP 740
+  attestations, and archived under a new Zenodo concept DOI that continues
+  `10.5281/zenodo.6762547` (FHR File Converter).
+
+- First release of the Round 16A maintenance changes merged after 0.13.1
+  (FAIR-bioHeaders-Tools#203; record in `docs/ROUND16-MAINTENANCE.md`): MD5
+  sequence identifiers are requested with `usedforsecurity=False`; the export
+  context and the FHGM prior-lane input are read with their size limits;
+  a malformed `BIOHEADERS_FHGM_MAX_BYTES` no longer makes every command
+  unimportable and is refused only when the FHGM lane is opened; the FHT HTML
+  contract digest check applies to the draft lane; GFF3 header-report error
+  grouping is explicit; `bioheaders-pin-audit` treats a run with no answered
+  reference as unreachable; and the user guides (`docs/GETTING-STARTED.md`,
+  `docs/PYTHON-API.md`) are added.
 
 - `bioheaders metadata --json FILE` (or `-` for stdin) reads the metadata
   options from a JSON document whose keys are the options without their dashes

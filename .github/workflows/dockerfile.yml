@@ -34,17 +34,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          tag="$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName)"
+          repo="$GITHUB_REPOSITORY"
+          if ! tag="$(gh release view --repo "$repo" --json tagName --jq .tagName)"; then
+            # Until this repository's first release (0.14.0), the newest release
+            # is the last one made from FAIR-bioHeaders-Tools (0.13.1).
+            repo=FAIR-bioHeaders/FAIR-bioHeaders-Tools
+            tag="$(gh release view --repo "$repo" --json tagName --jq .tagName)"
+          fi
           case "$tag" in
             v[0-9]*.[0-9]*.[0-9]*) ;;
             *) echo "Not a release tag: $tag" >&2; exit 1 ;;
           esac
           version="${tag#v}"
-          gh release download "$tag" --repo "$GITHUB_REPOSITORY" \
+          gh release download "$tag" --repo "$repo" \
             --pattern 'fair_bioheaders-*-py3-none-any.whl' --dir dist
           docker build --build-arg "VERSION=$version" --tag smoke-test .
           # Smoke-test with the release's own examples: main's may follow a newer spec.
-          git fetch --quiet --depth 1 origin tag "$tag"
+          git fetch --quiet --depth 1 "https://github.com/$repo.git" tag "$tag"
           mkdir release-examples
           git archive "$tag" examples | tar -x -C release-examples --strip-components 1
           run() { docker run --rm -v "$PWD/release-examples:/data:ro" smoke-test "$@"; }
