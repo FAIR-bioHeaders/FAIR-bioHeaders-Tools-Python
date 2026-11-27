@@ -10,7 +10,6 @@ import re
 import sys
 import tomllib
 from pathlib import Path
-from xml.etree import ElementTree
 
 
 def check(root: Path, tag: str | None = None) -> list[str]:
@@ -39,15 +38,9 @@ def check(root: Path, tag: str | None = None) -> list[str]:
     ]
     if code_versions != [version]:
         problems.append("bioheaders.__version__ must match package")
-    macros = ElementTree.parse(root / "galaxy/tools/fair_bioheaders/macros.xml")
-    values = [node.text for node in macros.findall("./token[@name='@TOOL_VERSION@']")]
-    if values != [version]:
-        problems.append("Galaxy @TOOL_VERSION@ must match package")
-    suffixes = [
-        node.text for node in macros.findall("./token[@name='@VERSION_SUFFIX@']")
-    ]
-    if len(suffixes) != 1 or not re.fullmatch(r"[0-9]+", suffixes[0] or ""):
-        problems.append("Galaxy @VERSION_SUFFIX@ must be one nonnegative integer")
+    # The Galaxy wrappers' @TOOL_VERSION@ is not a holder here: the wrappers stay
+    # in FAIR-bioHeaders-Tools (decision 29, FAIR-bioHeaders-Tools#206), which
+    # bumps it in a follow-up PR after each release.
     plugin = json.loads(
         (root / "plugins/fair-bioheaders/.claude-plugin/plugin.json").read_text()
     )
@@ -93,14 +86,13 @@ def main() -> int:
         ValueError,
         KeyError,
         SyntaxError,
-        ElementTree.ParseError,
     ) as error:
         problems = [str(error)]
     if problems:
         print("release versions: " + "; ".join(problems), file=sys.stderr)
         return 1
     print(
-        "release versions: package, code, compatibility, Galaxy, plugin, citation and changelog agree"
+        "release versions: package, code, compatibility, plugin, citation, README and changelog agree"
     )
     return 0
 

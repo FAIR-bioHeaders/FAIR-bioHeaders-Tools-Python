@@ -3,9 +3,15 @@ name: Release
 # Pushing a version tag (vX.Y.Z) builds, tests and publishes that version of two
 # distributions: fair-bioheaders (the tools) and fhr (the old name, which only
 # depends on the same fair-bioheaders version). Their wheels and sdists are
-# attached to a GitHub release (which Zenodo archives) and published to PyPI
-# through trusted publishing, with no stored token. The container image is then
-# built from the released wheel (container.yml).
+# attached to a GitHub release (which Zenodo archives under the Tools-Python
+# concept DOI, continuing 10.5281/zenodo.6762547) and published to PyPI through
+# trusted publishing, with no stored token, and with PEP 740 attestations. The
+# container image is then built from the released wheel (container.yml).
+#
+# Since 0.14.0 this workflow lives in FAIR-bioHeaders-Tools-Python. The PyPI
+# trusted publishers of fair-bioheaders and fhr name this repository, this
+# workflow file (release.yml) and the environment `pypi`, which requires a
+# maintainer's approval; v* tags can only be created by admins (ruleset).
 
 on:
   push:
@@ -133,6 +139,10 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
         with:
           skip-existing: true
+          # PEP 740 digital attestations, signed with this job's OIDC identity
+          # (the action's default under trusted publishing; stated explicitly so
+          # that it cannot be turned off silently).
+          attestations: true
 
   pypi-existing-release:
     if: github.event_name == 'workflow_dispatch'
@@ -158,3 +168,7 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
         with:
           skip-existing: true
+          # PEP 740 digital attestations, signed with this job's OIDC identity
+          # (the action's default under trusted publishing; stated explicitly so
+          # that it cannot be turned off silently).
+          attestations: true

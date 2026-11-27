@@ -2,7 +2,8 @@
 
 The `fhr` package on PyPI is now
 [`fair-bioheaders`](https://pypi.org/project/fair-bioheaders/), developed at
-[FAIR-bioHeaders-Tools](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools).
+[FAIR-bioHeaders-Tools-Python](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python)
+(until 0.13.1 at [FAIR-bioHeaders-Tools](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools)).
 
 This `fhr` distribution contains no code. It requires the same version of
 `fair-bioheaders`, so `pip install fhr` and `pip install -U fhr` keep installing
@@ -30,5 +31,5 @@ python -m pip install --force-reinstall --no-deps fair-bioheaders
 In an environment that still has `fhr` 0.3, uninstall it before installing
 `fair-bioheaders` on its own, or upgrade with `python -m pip install -U fhr`.
 
-See the [changelog](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/CHANGELOG.md)
+See the [changelog](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python/blob/main/CHANGELOG.md)
 for details.

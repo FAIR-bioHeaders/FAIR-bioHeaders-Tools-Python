@@ -20,7 +20,6 @@ def release(tmp_path):
         "pyproject.toml": '[tool.poetry]\nversion="1.2.3"\n',
         "compat/fhr/pyproject.toml": '[project]\nversion="1.2.3"\ndependencies=["fair-bioheaders==1.2.3"]\n',
         "bioheaders/__init__.py": '__version__ = "1.2.3"\n',
-        "galaxy/tools/fair_bioheaders/macros.xml": '<macros><token name="@TOOL_VERSION@">1.2.3</token><token name="@VERSION_SUFFIX@">0</token></macros>',
         "plugins/fair-bioheaders/.claude-plugin/plugin.json": json.dumps(
             {"version": "1.2.3"}
         ),
@@ -53,7 +52,6 @@ def test_coherent_release_passes(release):
     [
         "compat/fhr/pyproject.toml",
         "bioheaders/__init__.py",
-        "galaxy/tools/fair_bioheaders/macros.xml",
         "plugins/fair-bioheaders/.claude-plugin/plugin.json",
         "CITATION.cff",
         "CHANGELOG.md",
@@ -81,21 +79,20 @@ def test_missing_holder_fails_closed(release):
     assert invoke(release).returncode == 1
 
 
-def test_invalid_galaxy_suffix_fails(release):
-    target = release / "galaxy/tools/fair_bioheaders/macros.xml"
-    target.write_text(target.read_text().replace('SUFFIX@">0', 'SUFFIX@">-1'))
-    assert invoke(release).returncode == 1
-
-
 def test_citation_date_must_be_a_calendar_date(release):
     target = release / "CITATION.cff"
     target.write_text(target.read_text().replace("2026-11-19", "2026-02-30"))
     assert invoke(release).returncode == 1
 
 
-def test_independent_galaxy_revision_is_allowed(release):
-    target = release / "galaxy/tools/fair_bioheaders/macros.xml"
-    target.write_text(target.read_text().replace('SUFFIX@">0', 'SUFFIX@">1'))
+def test_galaxy_wrappers_are_not_a_holder(release):
+    """The Galaxy wrappers stay in FAIR-bioHeaders-Tools (decision 29), so a
+    checkout without galaxy/, or with a stale copy, does not affect the preflight."""
+    assert not (release / "galaxy").exists()
+    assert invoke(release).returncode == 0
+    stale = release / "galaxy/tools/fair_bioheaders/macros.xml"
+    stale.parent.mkdir(parents=True)
+    stale.write_text('<macros><token name="@TOOL_VERSION@">0.0.1</token></macros>')
     assert invoke(release).returncode == 0
 
 

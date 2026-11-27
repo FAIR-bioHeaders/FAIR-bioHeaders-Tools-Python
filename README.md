@@ -1,6 +1,6 @@
 # FAIR-bioHeaders Tools
 
-[![Tests](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/actions/workflows/pytest.yaml/badge.svg?branch=main)](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/actions/workflows/pytest.yaml)
+[![Tests](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python/actions/workflows/pytest.yaml/badge.svg?branch=main)](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python/actions/workflows/pytest.yaml)
 [![Specification DOI](https://img.shields.io/badge/Specification_DOI-10.5281%2Fzenodo.6762549-blue)](https://doi.org/10.5281/zenodo.6762549)
 [![File Converter DOI](https://img.shields.io/badge/File_Converter_DOI-10.5281%2Fzenodo.6762547-blue)](https://doi.org/10.5281/zenodo.6762547)
 
@@ -12,12 +12,19 @@ schema and metadata design, and
 each header type, operation, serialization and contract version — generated from
 the code and from commands run during the build of the document, not typed. This
 is the `fair-bioheaders` package, version
-**0.13.1**, formerly the FHR File Converter (`fhr`); see
+**0.14.0**, formerly the FHR File Converter (`fhr`); see
 [Renamed from fhr](#renamed-from-fhr).
+
+Since 0.14.0 the Python toolkit is developed here, in FAIR-bioHeaders-Tools-Python.
+Releases up to 0.13.1, their tags and the earlier history are in
+[FAIR-bioHeaders-Tools](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools), which is now the Rust core library;
+this repository was imported from it with its history preserved (see
+[the relocation record](docs/relocation/README.md)). Package, import and command
+names are unchanged.
 
 ### Published specification support in this checkout
 
-Toolkit 0.13.1 deliberately bundles specification v0.6.1, v0.7.0 and v0.8.0
+Toolkit 0.14.0, like 0.13.1, deliberately bundles specification v0.6.1, v0.7.0 and v0.8.0
 from their immutable tags. FHT 1.0 uses normal validation, verification,
 JSON/YAML conversion, FASTA combine/strip, parent links and typed HTML without an
 environment switch. See [publication provenance and limits](docs/FHT-PUBLICATION-CANDIDATE.md).
@@ -922,7 +929,8 @@ that follow the JSON Schemas in `bioheaders/assess/data/`.
 In 0.4.0 the PyPI package `fhr` was renamed `fair-bioheaders`, the Python package
 `fhr` was renamed `bioheaders`, and the repository moved from FHR-File-Converter
 to [FAIR-bioHeaders-Tools](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools)
-(old links redirect). The new names leave room for other FAIR-bioHeaders header
+(old links redirect). In 0.14.0 the Python toolkit moved again, to
+[FAIR-bioHeaders-Tools-Python](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools-Python), with its history; the names did not change. The new names leave room for other FAIR-bioHeaders header
 types. Nothing that worked with 0.3 stops working:
 
 - The `fhr-*` commands are unchanged and print no deprecation notices, so
@@ -1051,11 +1059,13 @@ on bio.tools as [`fair-bioheaders`](https://bio.tools/fair-bioheaders).
 
 ### Galaxy tools
 
-[`galaxy/tools/fair_bioheaders`](galaxy/tools/fair_bioheaders) holds Galaxy wrappers for
+[`galaxy/tools/fair_bioheaders`](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/tree/main/galaxy/tools/fair_bioheaders) in FAIR-bioHeaders-Tools holds Galaxy wrappers for
 `combine`, `verify` (with `validate`), `strip` and `convert`, for plain and gzip FASTA,
 GFA and GFF3 datasets, and for `metadata`, which writes FHR metadata (for `combine`) from
-entered values. They are in [galaxyproject/tools-iuc](https://github.com/galaxyproject/tools-iuc/tree/main/tools/fair_bioheaders) (the canonical copy) and on the main Galaxy Tool Shed as [`suite_fair_bioheaders`](https://toolshed.g2.bx.psu.edu/view/iuc/suite_fair_bioheaders) (owner `iuc`). They require `fair-bioheaders` from Bioconda. [`galaxy-tools.yml`](.github/workflows/galaxy-tools.yml) lints them with planemo
-and runs their tests against this checkout; see [`galaxy/README.md`](galaxy/README.md).
+entered values. They are in [galaxyproject/tools-iuc](https://github.com/galaxyproject/tools-iuc/tree/main/tools/fair_bioheaders) (the canonical copy) and on the main Galaxy Tool Shed as [`suite_fair_bioheaders`](https://toolshed.g2.bx.psu.edu/view/iuc/suite_fair_bioheaders) (owner `iuc`). They require `fair-bioheaders` from Bioconda. [`galaxy-tools.yml`](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/.github/workflows/galaxy-tools.yml) lints them with planemo
+there; see [`galaxy/README.md`](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/blob/main/galaxy/README.md). The wrappers stay in FAIR-bioHeaders-Tools
+(they were not moved with the Python toolkit); after a `fair-bioheaders` release, a
+FAIR-bioHeaders-Tools PR bumps their `@TOOL_VERSION@`, followed by the tools-iuc PR.
 
 ### Releasing the image
 

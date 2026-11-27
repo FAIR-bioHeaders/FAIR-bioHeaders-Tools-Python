@@ -1,0 +1,16 @@
+{
+  "title": "FHR File Converter (fair-bioheaders Python toolkit)",
+  "upload_type": "software",
+  "description": "<p>fair-bioheaders: convert and validate FAIR-bioHeaders (FHR, FHP, FHT, FHGFF3) metadata in JSON, YAML, JSON-LD, FASTA, GFA, GFF3 and HTML microdata; installs the <code>bioheaders</code> and <code>fhr-*</code> commands. From 0.14.0 this Python toolkit is developed in FAIR-bioHeaders-Tools-Python. It continues the FHR File Converter record <a href=\"https://doi.org/10.5281/zenodo.6762547\">10.5281/zenodo.6762547</a>, whose versions up to 0.13.1 were released from FAIR-bioHeaders-Tools.</p>",
+  "creators": [
+    {"name": "Molik, David", "affiliation": "USDA ARS ABADRU", "orcid": "0000-0003-3192-6538"},
+    {"name": "Wright, Adam", "affiliation": "OICR", "orcid": "0000-0002-5719-4024"}
+  ],
+  "license": "MPL-2.0",
+  "keywords": ["FAIR", "TRUST", "fasta", "yaml", "json", "gfa", "microdata", "genome assembly"],
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.6762547", "relation": "isNewVersionOf", "resource_type": "software", "scheme": "doi"},
+    {"identifier": "10.1093/bib/bbae122", "relation": "isDocumentedBy", "resource_type": "publication-article", "scheme": "doi"}
+  ],
+  "notes": "Historical USDA public-domain material and MPL-2.0 contributions are distinguished in LICENSE and by the version history, which was preserved when the toolkit moved from FAIR-bioHeaders-Tools (commit c7abb7358bbe09796051caa663000cd43bd605f6) to FAIR-bioHeaders-Tools-Python."
+}
