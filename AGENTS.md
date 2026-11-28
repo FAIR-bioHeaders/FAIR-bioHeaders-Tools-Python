@@ -27,7 +27,7 @@ Use only released, schema-pinned contracts for validation -- never raw `main`. T
 
 ## Issue tracking and PR process
 
-- Add every issue to the connected Project 9 board ("FAIR BioHeaders -- 2026 refresh") and set `Status` to `In Progress`.
+- Add every issue you work on to the connected Project 9 board ("FAIR BioHeaders -- 2026 refresh") and set `Status` to `In Progress` when work starts, unless an explicit maintainer project boundary applies. Project 12 alone owns specification #206/#228 and Tools #150; Project 13 alone owns specification #248/#249, Tools #169/#170 and Janeway plugin #1–#5. Adam's Galaxy/VGP/GTN work, Tools #171 and its GTN planning child #176, is outside Project 9. Do not route these automatically to Project 9. Shared foundations remain in Project 9 even when consumed by those projects.
 - Link every PR to its issue (`Closes #N` or `Refs #N`). Do not do unreported work.
 - After each work run, post a status comment on the issue: what changed, checks run, commit links, blockers, and next action.
 
