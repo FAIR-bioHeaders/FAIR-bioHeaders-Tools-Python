@@ -13,7 +13,7 @@ Use only released, schema-pinned contracts for validation -- never raw `main`. T
 
 ## Licensing policy
 
-**Software (new project-owned code from March 2025 onward):** MPL-2.0 -- the family standard for new software contributions. David Molik left USDA in February 2025; contributions before that date carry public-domain / PDDL-era terms within the United States. The repo's `LICENSE` documents the provenance split. Do not normalize old notices to the new license, and do not "clean up" a historical PDDL/public-domain line.
+**Software (new project-owned code from March 2025 onward):** MPL-2.0 -- the family standard for new software contributions. David Molik left USDA in February 2025. Historical USDA material released under the preserved public-domain notice remains public domain within the United States; other material retains its applicable permissions and third-party terms. Determine provenance from file notices and version history, not contribution dates alone. The repo's `LICENSE` documents the scope. Do not normalize old notices to the new license, and do not "clean up" a historical PDDL/public-domain line.
 
 **Test datasets and generated databases:** ODbL-1.0 (Open Database License) for newly created project-owned database collections where the project has authority to grant database rights. Reference: https://opendatacommons.org/licenses/odbl/.
 
