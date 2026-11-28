@@ -35,4 +35,37 @@ Use only released, schema-pinned contracts for validation -- never raw `main`. T
 
 Agents must never merge pull requests. Every PR receives independent review from another actual model (preferably a different model family). Record actual author/reviewer identities; never invent provenance. Agents may monitor CI, fix failures and resolve actionable findings -- but only humans merge. Do not enable auto-merge or push directly to default branches.
 
+### Code review on a PR
+
+When a PR receives code review (human or model):
+
+1. Read the overall review and every inline comment before changing anything.
+2. Make each fix in a **new commit**. Do not amend or force-push over reviewed
+   commits; if a rebase is required, cite the new head in the replies.
+3. Reply to each inline finding with the fix and the relevant commit hash.
+4. Resolve that inline comment/thread.
+5. After all findings are handled, post an overall reply to the review
+   summarizing each finding's disposition and the commits.
+6. Treat optional suggestions as required unless they are genuinely out of
+   scope; state why and link a follow-up issue.
+
+Acknowledge clean reviews with a comment and validation summary. Validate the
+current head after changes; hand the human exact head/base, review, CI,
+dependency and remaining-risk information. Missing, failed and NOT_RUN checks
+are not passes. Contract adoption, curator acceptance and publication keep
+their separate authority and gates.
+
+### Project 14 PR receipt (maintainer decision, 2026-11-25)
+
+Every Project 14 PR (the Rust core and wrapper migration, including the
+development-branch PR to `main`) fills in the `p14-receipt v1` block from
+`.github/pull_request_template.md`: work package, class, author model/agent,
+independent reviewer model(s), review and fix rounds, model usage, human time
+bucket and current-head CI evidence. Usage and time may be given as an
+`estimate` or as `unavailable`; label estimates and never write a missing value
+as 0. Update the block when review or fix rounds change. Other PRs omit it.
+A missing block counts against receipt coverage in the Tools#209 ledger rather
+than failing CI. Design and field definitions:
+[FAIR-bioHeaders-Tools#209](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Tools/issues/209).
+
 See [`FAIR-bioHeaders-Specification`](https://github.com/FAIR-bioHeaders/FAIR-bioHeaders-Specification) for full model review policy, project board conventions and the complete licensing framework.
